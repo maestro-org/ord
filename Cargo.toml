@@ -25,7 +25,7 @@ axum-server = "0.5.0"
 base64 = "0.22.0"
 bech32 = "0.11.0"
 bip39 = "2.0.0"
-bitcoin = { version = "0.30.1", features = ["rand"] }
+bitcoin = { git = "https://github.com/jmhrpr/rust-bitcoin", rev = "65ef51ccdbdf69beeb291fe165911b101d2ce29c", features = ["serde", "rand"] }
 boilerplate = { version = "1.0.0", features = ["axum"] }
 brotli = "5.0.0"
 chrono = { version = "0.4.19", features = ["serde"] }
@@ -94,3 +94,6 @@ path = "tests/lib.rs"
 
 [build-dependencies]
 pulldown-cmark = "0.10.0"
+
+[patch.crates-io]
+bitcoin = { git = "https://github.com/jmhrpr/rust-bitcoin", rev = "65ef51ccdbdf69beeb291fe165911b101d2ce29c", features = ["serde", "rand"] }
