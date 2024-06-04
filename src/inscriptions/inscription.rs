@@ -246,7 +246,7 @@ impl Inscription {
     str::from_utf8(self.metaprotocol.as_ref()?).ok()
   }
 
-  pub(crate) fn parents(&self) -> Vec<InscriptionId> {
+  pub fn parents(&self) -> Vec<InscriptionId> {
     self
       .parents
       .iter()
@@ -254,7 +254,7 @@ impl Inscription {
       .collect()
   }
 
-  pub(crate) fn pointer(&self) -> Option<u64> {
+  pub fn pointer(&self) -> Option<u64> {
     let value = self.pointer.as_ref()?;
 
     if value.iter().skip(8).copied().any(|byte| byte != 0) {
@@ -289,7 +289,7 @@ impl Inscription {
     witness
   }
 
-  pub(crate) fn hidden(&self) -> bool {
+  pub fn hidden(&self) -> bool {
     use regex::bytes::Regex;
 
     const BVM_NETWORK: &[u8] = b"<body style=\"background:#F61;color:#fff;\">\
