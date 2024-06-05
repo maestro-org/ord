@@ -214,11 +214,11 @@ impl Inscription {
     content_type.parse().unwrap_or(Media::Unknown)
   }
 
-  pub(crate) fn body(&self) -> Option<&[u8]> {
+  pub fn body(&self) -> Option<&[u8]> {
     Some(self.body.as_ref()?)
   }
 
-  pub(crate) fn into_body(self) -> Option<Vec<u8>> {
+  pub fn into_body(self) -> Option<Vec<u8>> {
     self.body
   }
 
