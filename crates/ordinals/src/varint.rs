@@ -10,26 +10,24 @@ pub fn encode_to_vec(mut n: u128, v: &mut Vec<u8>) {
 
 pub fn decode(buffer: &[u8]) -> Result<(u128, usize), Error> {
   let mut n = 0u128;
+  let mut i = 0;
 
-  for (i, &byte) in buffer.iter().enumerate() {
-    if i > 18 {
-      return Err(Error::Overlong);
-    }
+  loop {
+    if i < buffer.len() {
+      let b = buffer[i] as u128;
+      n *= 128;
 
-    let value = u128::from(byte) & 0b0111_1111;
+      if b < 128 {
+        return Ok((n + b, i + 1));
+      }
 
-    if i == 18 && value & 0b0111_1100 != 0 {
-      return Err(Error::Overflow);
-    }
+      n = n + b - 127;
 
-    n |= value << (7 * i);
-
-    if byte & 0b1000_0000 == 0 {
-      return Ok((n, i + 1));
+      i += 1;
+    } else {
+      return Ok((n, i));
     }
   }
-
-  Err(Error::Unterminated)
 }
 
 pub fn encode(n: u128) -> Vec<u8> {

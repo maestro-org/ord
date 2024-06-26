@@ -204,12 +204,6 @@ impl Runestone {
         continue;
       }
 
-      // // followed by the protocol identifier, ignoring errors, since OP_RETURN
-      // // scripts may be invalid
-      // if instructions.next() != Some(Ok(Instruction::Op(Runestone::MAGIC_NUMBER))) {
-      //   continue;
-      // }
-
       if instructions.next() != Some(Ok(Instruction::PushBytes((&[b'D']).into()))) {
         continue;
       }
