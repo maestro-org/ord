@@ -9,7 +9,7 @@ license = "CC0-1.0"
 rust-version = "1.74.0"
 
 [dependencies]
-bitcoin = { git = "https://github.com/jmhrpr/rust-bitcoin", rev = "65ef51ccdbdf69beeb291fe165911b101d2ce29c", features = ["serde", "rand"] }
+bitcoin = { git = "https://github.com/maestro-org/rust-bitcoin", rev = "65ef51ccdbdf69beeb291fe165911b101d2ce29c", features = ["serde", "rand"] }
 derive_more = "0.99.17"
 serde = { version = "1.0.137", features = ["derive"] }
 serde_with = "3.7.0"

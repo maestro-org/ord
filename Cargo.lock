@@ -502,10 +502,10 @@ dependencies = [
 [[package]]
 name = "bitcoin"
 version = "0.30.2"
-source = "git+https://github.com/jmhrpr/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c#65ef51ccdbdf69beeb291fe165911b101d2ce29c"
+source = "git+https://github.com/maestro-org/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c#65ef51ccdbdf69beeb291fe165911b101d2ce29c"
 dependencies = [
  "bech32 0.9.1",
- "bitcoin-private 0.1.0 (git+https://github.com/jmhrpr/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c)",
+ "bitcoin-private 0.1.0 (git+https://github.com/maestro-org/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c)",
  "bitcoin_hashes 0.12.0",
  "hex-conservative",
  "hex_lit",
@@ -522,7 +522,7 @@ checksum = "73290177011694f38ec25e165d0387ab7ea749a4b81cd4c80dae5988229f7a57"
 [[package]]
 name = "bitcoin-private"
 version = "0.1.0"
-source = "git+https://github.com/jmhrpr/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c#65ef51ccdbdf69beeb291fe165911b101d2ce29c"
+source = "git+https://github.com/maestro-org/rust-bitcoin?rev=65ef51ccdbdf69beeb291fe165911b101d2ce29c#65ef51ccdbdf69beeb291fe165911b101d2ce29c"
 
 [[package]]
 name = "bitcoin_hashes"
