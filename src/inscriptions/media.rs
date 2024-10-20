@@ -24,7 +24,7 @@ pub enum Media {
 }
 
 #[derive(Debug, PartialEq, Copy, Clone)]
-pub(crate) enum Language {
+pub enum Language {
   Css,
   JavaScript,
   Json,
@@ -49,7 +49,7 @@ impl Display for Language {
 }
 
 #[derive(Debug, PartialEq, Copy, Clone)]
-pub(crate) enum ImageRendering {
+pub enum ImageRendering {
   Auto,
   Pixelated,
 }

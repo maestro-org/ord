@@ -6,8 +6,7 @@ use {
     address::{Address, NetworkUnchecked},
     amount::SignedAmount,
     block::Header,
-    blockdata::constants::COIN_VALUE,
-    blockdata::{block::Version, script},
+    blockdata::{script, transaction::Version},
     consensus::encode::{deserialize, serialize},
     hash_types::{BlockHash, TxMerkleNode},
     hashes::Hash,
@@ -17,15 +16,15 @@ use {
     Wtxid,
   },
   bitcoincore_rpc::json::{
-    Bip125Replaceable, CreateRawTransactionInput, Descriptor, EstimateMode, FeeRatePercentiles,
+    Bip125Replaceable, CreateRawTransactionInput, EstimateMode, FeeRatePercentiles,
     FinalizePsbtResult, GetBalancesResult, GetBalancesResultEntry, GetBlockHeaderResult,
     GetBlockStatsResult, GetBlockchainInfoResult, GetDescriptorInfoResult, GetNetworkInfoResult,
     GetRawTransactionResult, GetRawTransactionResultVout, GetRawTransactionResultVoutScriptPubKey,
     GetTransactionResult, GetTransactionResultDetail, GetTransactionResultDetailCategory,
     GetTxOutResult, GetWalletInfoResult, ImportDescriptors, ImportMultiResult,
-    ListDescriptorsResult, ListTransactionResult, ListUnspentResultEntry, ListWalletDirItem,
-    ListWalletDirResult, LoadWalletResult, SignRawTransactionInput, SignRawTransactionResult,
-    Timestamp, WalletProcessPsbtResult, WalletTxInfo,
+    ListTransactionResult, ListUnspentResultEntry, ListWalletDirItem, ListWalletDirResult,
+    LoadWalletResult, SignRawTransactionInput, SignRawTransactionResult, Timestamp,
+    WalletProcessPsbtResult, WalletTxInfo,
   },
   jsonrpc_core::{IoHandler, Value},
   jsonrpc_http_server::{CloseHandle, ServerBuilder},
@@ -43,9 +42,27 @@ use {
   tempfile::TempDir,
 };
 
+const COIN_VALUE: u64 = 100_000_000;
+
 mod api;
 mod server;
 mod state;
+
+#[derive(Clone, PartialEq, Eq, Debug, Deserialize, Serialize)]
+pub struct Descriptor {
+  pub desc: String,
+  pub timestamp: Timestamp,
+  pub active: bool,
+  pub internal: Option<bool>,
+  pub range: Option<(u64, u64)>,
+  pub next: Option<u64>,
+}
+
+#[derive(Clone, PartialEq, Eq, Debug, Deserialize, Serialize)]
+pub struct ListDescriptorsResult {
+  pub wallet_name: String,
+  pub descriptors: Vec<Descriptor>,
+}
 
 pub fn builder() -> Builder {
   Builder {
@@ -133,9 +150,11 @@ pub struct TransactionTemplate<'a> {
   pub inputs: &'a [(usize, usize, usize, Witness)],
   pub op_return: Option<ScriptBuf>,
   pub op_return_index: Option<usize>,
+  pub op_return_value: Option<u64>,
   pub output_values: &'a [u64],
   pub outputs: usize,
   pub p2tr: bool,
+  pub recipient: Option<Address>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -180,9 +199,11 @@ impl<'a> Default for TransactionTemplate<'a> {
       inputs: &[],
       op_return: None,
       op_return_index: None,
+      op_return_value: None,
       output_values: &[],
       outputs: 1,
       p2tr: false,
+      recipient: None,
     }
   }
 }

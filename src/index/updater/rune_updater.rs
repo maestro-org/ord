@@ -4,7 +4,7 @@ pub(super) struct RuneUpdater<'a, 'tx, 'client> {
   pub(super) block_time: u32,
   pub(super) burned: HashMap<RuneId, Lot>,
   pub(super) client: &'client Client,
-  pub(super) event_sender: Option<&'a Sender<Event>>,
+  pub(super) event_sender: Option<&'a mpsc::Sender<Event>>,
   pub(super) height: u32,
   pub(super) id_to_entry: &'a mut Table<'tx, RuneIdValue, RuneEntryValue>,
   pub(super) inscription_id_to_sequence_number: &'a Table<'tx, InscriptionIdValue, u32>,
@@ -438,7 +438,7 @@ impl<'a, 'tx, 'client> RuneUpdater<'a, 'tx, 'client> {
         let taproot = tx_info.vout[input.previous_output.vout.into_usize()]
           .script_pub_key
           .script()?
-          .is_v1_p2tr();
+          .is_p2tr();
 
         if !taproot {
           continue;
