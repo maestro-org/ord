@@ -1,6 +1,66 @@
 Changelog
 =========
 
+[0.24.2](https://github.com/ordinals/ord/releases/tag/0.24.1) - 2025-11-13
+--------------------------------------------------------------------------
+
+### Fixed
+- Fix trait template description list ([#4440](https://github.com/ordinals/ord/pull/4440) by [casey](https://github.com/casey))
+
+### Misc
+- Return empty page if block inscription page request is out of range ([#4439](https://github.com/ordinals/ord/pull/4439) by [casey](https://github.com/casey))
+- Log index creation ([#4438](https://github.com/ordinals/ord/pull/4438) by [casey](https://github.com/casey))
+
+[0.24.1](https://github.com/ordinals/ord/releases/tag/0.24.1) - 2025-11-13
+--------------------------------------------------------------------------
+
+### Fixed
+- Bump schema version ([#4436](https://github.com/ordinals/ord/pull/4436) by [casey](https://github.com/casey))
+
+[0.24.0](https://github.com/ordinals/ord/releases/tag/0.23.3) - 2025-11-12
+--------------------------------------------------------------------------
+
+### Fixed
+- Fix redirects for outpoints and TXIDs consisting only of decimal digits ([#4421](https://github.com/ordinals/ord/pull/4421) by [gmart7t2](https://github.com/gmart7t2))
+- Don't cache negative sat index responses ([#4418](https://github.com/ordinals/ord/pull/4418) by [casey](https://github.com/casey))
+
+### Added
+- Add traits ([#4433](https://github.com/ordinals/ord/pull/4433) by [casey](https://github.com/casey))
+- Return properties from inscription JSON API ([#4425](https://github.com/ordinals/ord/pull/4425) by [casey](https://github.com/casey))
+- Add attributes to inscriptions and gallery items ([#4424](https://github.com/ordinals/ord/pull/4424) by [casey](https://github.com/casey))
+
+### Misc
+- Replace `lazy_static` with `LazyLock` ([#4429](https://github.com/ordinals/ord/pull/4429) by [terror](https://github.com/terror))
+- Fix rune specification ([#4430](https://github.com/ordinals/ord/pull/4430) by [gmart7t2](https://github.com/gmart7t2))
+- Add properties and metaprotocol to API docs ([#4426](https://github.com/ordinals/ord/pull/4426) by [casey](https://github.com/casey))
+- Use single properties struct ([#4423](https://github.com/ordinals/ord/pull/4423) by [casey](https://github.com/casey))
+- Fix typo in src/fund_raw_transaction.rs ([#4420](https://github.com/ordinals/ord/pull/4420) by [stemlaud](https://github.com/stemlaud))
+- Add complete Japanese translation ([#4406](https://github.com/ordinals/ord/pull/4406) by [SatoshiRoppongi](https://github.com/SatoshiRoppongi))
+- Update install script to use Bitcoin Core 30 ([#4417](https://github.com/ordinals/ord/pull/4417) by [casey](https://github.com/casey))
+- Upgrade checkout to v5 ([#4392](https://github.com/ordinals/ord/pull/4392) by [rejected-l](https://github.com/rejected-l))
+- Update to Rust 2024 ([#4412](https://github.com/ordinals/ord/pull/4412) by [casey](https://github.com/casey))
+
+[0.23.3](https://github.com/ordinals/ord/releases/tag/0.23.3) - 2025-09-19
+--------------------------------------------------------------------------
+
+### Added
+- Support ordinals.com satscards ([#4410](https://github.com/ordinals/ord/pull/4410) by [casey](https://github.com/casey))
+- Allow submitting offers created with wallet ([#4409](https://github.com/ordinals/ord/pull/4409) by [casey](https://github.com/casey))
+- Add PSBT offer submission ([#4408](https://github.com/ordinals/ord/pull/4408) by [casey](https://github.com/casey))
+- Add wallet sweep command ([#4394](https://github.com/ordinals/ord/pull/4394) by [raphjaph](https://github.com/raphjaph))
+
+### Changed
+- Enable json response on `/children` routes ([#4281](https://github.com/ordinals/ord/pull/4281) by [felipelincoln](https://github.com/felipelincoln))
+
+### Misc
+- Fix new Rust lints ([#4396](https://github.com/ordinals/ord/pull/4396) by [casey](https://github.com/casey))
+- Update deps and fmt ([#4385](https://github.com/ordinals/ord/pull/4385) by [raphjaph](https://github.com/raphjaph))
+- Update api.md ([#4381](https://github.com/ordinals/ord/pull/4381) by [Galoretka](https://github.com/Galoretka))
+- Allow inscribing with backup and Core v29 ([#4371](https://github.com/ordinals/ord/pull/4371) by [gmart7t2](https://github.com/gmart7t2))
+- Update minimum Rust version to 1.85.0 ([#4356](https://github.com/ordinals/ord/pull/4356) by [blieb](https://github.com/blieb))
+- Fix clippy lints ([#4373](https://github.com/ordinals/ord/pull/4373) by [raphjaph](https://github.com/raphjaph))
+- Use `unversioned_leaf_script_from_witness()` ([#4355](https://github.com/ordinals/ord/pull/4355) by [casey](https://github.com/casey))
+
 [0.23.2](https://github.com/ordinals/ord/releases/tag/0.23.2) - 2025-05-20
 --------------------------------------------------------------------------
 

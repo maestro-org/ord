@@ -165,8 +165,8 @@ impl Plan {
         Ok(txid) => txid,
         Err(err) => {
           return Err(anyhow!(
-        "Failed to send reveal transaction: {err}\nCommit tx {commit_txid} will be recovered once mined"
-      ))
+            "Failed to send reveal transaction: {err}\nCommit tx {commit_txid} will be recovered once mined"
+          ));
         }
       };
 
@@ -462,13 +462,13 @@ impl Plan {
               Ok(ordinals::Terms {
                 cap: (terms.cap > 0).then_some(terms.cap),
                 height: (
-                  terms.height.and_then(|range| (range.start)),
-                  terms.height.and_then(|range| (range.end)),
+                  terms.height.and_then(|range| range.start),
+                  terms.height.and_then(|range| range.end),
                 ),
                 amount: Some(terms.amount.to_integer(etching.divisibility)?),
                 offset: (
-                  terms.offset.and_then(|range| (range.start)),
-                  terms.offset.and_then(|range| (range.end)),
+                  terms.offset.and_then(|range| range.start),
+                  terms.offset.and_then(|range| range.end),
                 ),
               })
             })
